@@ -1,42 +1,86 @@
 #include <stdio.h>
 #include <stdlib.h>
-//c program to sort an array(bubble sort)
-int i,j,min,max,k,f;
-void checkminandmaxnumber(){
-    int sorted[9];
-    //find minimum value
-    int numbers[9]={5,16,13,11,1,3,2,7,0};
-    for(i=0;i<9;i++){
-            min=i;
-        for(j=0;j<9;j++){
-            if(numbers[j]<numbers[min]){
-                min=j;
+int input1,input2;
+int userschange;
+int userschange1;
+int currencies[8]={5,10,20,50,100,200,500,1000};
+void calculateuserschange(){
+    printf("How much goods do you want to buy?:\n");
+    scanf("%i",&input1);
+    printf("Enter the amount you want to pay:\n");
+    scanf("%i",&input2);
+    userschange=input2-input1;
+    userschange1=input2-input1;
+}
+void conditionsforuserschange(){
 
-            }
+        if(input2>=input1&&input1>0&&input2>0){
+        printf("users change:%i\n",userschange);
+    }
 
+}
+void actualcalculation(){
+    int anss;
+    int i;
+           if(input2>=input1&&input1>0&&input2>0){
+                        printf("transaction in progress...\n");
+
+        }else{
+            printf("Invalid transaction\n");
         }
-        //find maximum value
-        for(f=0;f<=0;f++){
-                max=f;
-                for(k=i+1;k<9;k++){
-                    if(numbers[max]<numbers[k]){
-                        max=k;
-                    }
-                }
-            }
-            sorted[i]=numbers[min];
-            //remove numbers[min] from the next check
-            numbers[min]=numbers[max]+1;
-}
-         for(i=0;i<9;i++){
-        printf("%i\n",sorted[i]);
+    for(i=7;i>=0;i--){
+        anss=(int)userschange/currencies[i];
+        userschange=userschange-(anss*currencies[i]);
+        if(input2>=input1&&input1>0&&input2>0){
+                        printf("%i of %i naira\n",anss,currencies[i]);
+        }
     }
+         if(userschange>0&&input2>=input1&&input1>0&&input2>0){
+            printf("your remaining change is %i naira\n",userschange);
+        }
+
+
+
+
+            //if(input2<input1&&input2!=0){
+            //printf("Insufficient amount\n");
+
+
+    //}
+       /*if(input1<0){
+        printf("you can't buy goods of negative amounts\n");
+
+    } if(input2<0){
+        printf("you can't pay a negative amount\n");
+
+    }else if(input1==0 && input2!=0){
+        printf("you can't buy goods of zero naira\n");
+
 }
-int main()
+    if(input1==0&&input2==0){
+        printf("you can't buy goods of zero naira\nyou can't pay zero naira\n");
+    }
+
+
+    else if(input2==0){
+        printf("you can't pay zero naira\n");
+
+    }*/
+
+
+
+}
+
+   int main()
 {
-    checkminandmaxnumber();
+
+while(1){
+    calculateuserschange();
+    conditionsforuserschange();
+    actualcalculation();
+}
 return 0;
-    }
+}
 
 
 
